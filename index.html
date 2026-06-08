@@ -233,6 +233,67 @@ font-size:2.3rem;
 .navbar{
 padding:15px 20px;
 }
+.catalogo{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+.catalogo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.producto{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.producto:hover{
+transform:translateY(-5px);
+}
+
+.producto img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.producto-info{
+padding:20px;
+text-align:center;
+}
+
+.producto-old{
+text-decoration:line-through;
+color:#999;
+}
+
+.producto-price{
+font-size:2rem;
+font-weight:bold;
+margin:10px 0;
+}
+
+.stock{
+color:#16a34a;
+font-weight:bold;
+margin:10px 0;
+}
+
+.producto-btn{
+display:inline-block;
+margin-top:10px;
+padding:14px 25px;
+background:black;
+color:white;
+text-decoration:none;
+border-radius:50px;
+}
 
 }
 
@@ -292,6 +353,83 @@ Comprar Ahora </a>
 </section>
 
 <section class="section">
+
+  <section class="catalogo">
+
+<h2>Nuestro Catálogo</h2>
+
+<div class="catalogo-grid">
+
+<div class="producto">
+
+<img src="IMG_1827.jpg" alt="Cross Black Classic">
+
+<div class="producto-info">
+
+<h3>Cross Black Classic</h3>
+
+<p class="producto-old">$95.000 COP</p>
+
+<div class="producto-price">$85.000 COP</div>
+
+<p class="stock">🔥 Solo quedan 8 unidades</p>
+
+<a class="producto-btn"
+href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Classic">
+Comprar por WhatsApp </a>
+
+</div>
+
+</div>
+
+<div class="producto">
+
+<img src="IMG_1830.jpg" alt="Cross Black Urban">
+
+<div class="producto-info">
+
+<h3>Cross Black Urban</h3>
+
+<p class="producto-old">$95.000 COP</p>
+
+<div class="producto-price">$85.000 COP</div>
+
+<p class="stock">⚡ Últimas 5 disponibles</p>
+
+<a class="producto-btn"
+href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Urban">
+Comprar por WhatsApp </a>
+
+</div>
+
+</div>
+
+<div class="producto">
+
+<img src="foto3.png" alt="Cross Black Luxury">
+
+<div class="producto-info">
+
+<h3>Cross Black Luxury</h3>
+
+<p class="producto-old">$95.000 COP</p>
+
+<div class="producto-price">$85.000 COP</div>
+
+<p class="stock">🔥 Solo quedan 3 unidades</p>
+
+<a class="producto-btn"
+href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Luxury">
+Comprar por WhatsApp </a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 
 <h2>Galería</h2>
 
