@@ -3,515 +3,1166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Cross Black | Gafas Premium</title>
-
-<meta name="description" content="Gafas Cross Black. Diseño premium, estilo urbano y calidad superior. Empaque de fábrica incluido.">
-
+<title>Cross Black</title>
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+:root {
+  --black: #0a0a0a;
+  --black2: #111111;
+  --card: #161616;
+  --border: #2a2a2a;
+  --gold: #c9a84c;
+  --gold2: #e8c96a;
+  --white: #f5f5f5;
+  --gray: #888;
+  --green: #22c55e;
 }
 
-html{
-scroll-behavior:smooth;
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
 }
 
-body{
-background:#f7f7f7;
-color:#111;
-line-height:1.6;
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.navbar{
-position:sticky;
-top:0;
-z-index:1000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 40px;
-background:rgba(255,255,255,.92);
-backdrop-filter:blur(15px);
-border-bottom:1px solid #ececec;
+/* ── NAVBAR ── */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10,10,10,.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
 }
 
-.logo{
-font-size:1.1rem;
-font-weight:800;
-letter-spacing:3px;
+.logo {
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--gray);
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  padding: 10px 22px;
+  border: 1px solid var(--gold);
+  color: var(--gold) !important;
+  border-radius: 2px;
+  font-size: .7rem !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s, color .2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav-btn{
-text-decoration:none;
-color:#fff;
-background:#111;
-padding:12px 22px;
-border-radius:50px;
-font-weight:600;
-transition:.3s;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(201,168,76,.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.nav-btn:hover{
-transform:translateY(-2px);
+.hero-eyebrow {
+  font-size: .68rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
 }
 
-.hero{
-max-width:1200px;
-margin:auto;
-padding:80px 20px;
-text-align:center;
+.hero h1 {
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 900;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  line-height: .95;
+  margin-bottom: 12px;
 }
 
-.badge{
-display:inline-block;
-padding:10px 18px;
-border-radius:50px;
-background:#fff;
-border:1px solid #e5e5e5;
-font-size:.9rem;
-font-weight:600;
-margin-bottom:20px;
+.hero h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--gold);
 }
 
-.hero h1{
-font-size:5rem;
-font-weight:900;
-letter-spacing:4px;
-margin-bottom:10px;
+.hero-sub {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  letter-spacing: 1px;
 }
 
-.hero p{
-max-width:700px;
-margin:auto;
-font-size:1.15rem;
-color:#666;
+.hero-image-wrap {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 40px;
+  position: relative;
 }
 
-.main-image{
-width:100%;
-max-width:950px;
-margin-top:40px;
-border-radius:30px;
-box-shadow:0 25px 70px rgba(0,0,0,.15);
+.hero-image-wrap img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 0 1px var(--border);
+  transition: transform .6s ease;
+}
+.hero-image-wrap:hover img { transform: scale(1.015); }
+
+/* ── TIMER ── */
+.offer-banner {
+  background: var(--gold);
+  color: var(--black);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
-.price-card{
-background:white;
-max-width:420px;
-margin:35px auto;
-padding:35px;
-border-radius:25px;
-box-shadow:0 20px 50px rgba(0,0,0,.08);
+.timer-section {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
 }
 
-.price{
-font-size:3.2rem;
-font-weight:900;
+.timer-label {
+  font-size: .7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
 }
 
-.price-label{
-color:#666;
-margin-bottom:15px;
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.extra{
-margin-top:15px;
-padding:12px;
-background:#f6f6f6;
-border-radius:12px;
-font-weight:600;
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.buy-btn{
-display:inline-block;
-margin-top:20px;
-padding:18px 40px;
-background:#111;
-color:white;
-text-decoration:none;
-border-radius:50px;
-font-weight:700;
-transition:.3s;
+.timer-num {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  min-width: 70px;
+  text-align: center;
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 12px;
 }
 
-.buy-btn:hover{
-transform:translateY(-3px);
+.timer-lbl {
+  font-size: .6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
 }
 
-.section{
-max-width:1200px;
-margin:auto;
-padding:80px 20px;
+.timer-sep {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+  padding-top: 8px;
+  color: var(--gold);
 }
 
-.section h2{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:50px;
+/* ── CATALOG ── */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
-.catalogo-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+.section-head {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.producto{
-background:white;
-border-radius:25px;
-overflow:hidden;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-transition:.3s;
+.section-head h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-.producto:hover{
-transform:translateY(-8px);
+.section-head p {
+  color: var(--gray);
+  margin-top: 10px;
+  font-size: .9rem;
+  letter-spacing: 1px;
 }
 
-.producto img{
-width:100%;
-height:320px;
-object-fit:cover;
+.section-head .eyebrow {
+  font-size: .65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
 }
 
-.producto-info{
-padding:25px;
-text-align:center;
+/* Model Selector + Cards */
+.model-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
-.producto-price{
-font-size:2rem;
-font-weight:900;
-margin:10px 0;
+.model-tab {
+  padding: 8px 22px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gray);
+  font-size: .7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all .2s;
 }
 
-.producto-btn{
-display:inline-block;
-padding:14px 25px;
-background:#111;
-color:white;
-text-decoration:none;
-border-radius:40px;
-margin-top:10px;
+.model-tab.active,
+.model-tab:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,.06);
 }
 
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.feature{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.06);
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform .3s, border-color .3s;
+  display: none;
 }
 
-.feature h3{
-margin-bottom:10px;
+.product-card.visible {
+  display: block;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
 }
 
-.gallery img{
-width:100%;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+.product-card:hover img { transform: scale(1.04); }
+
+.product-info {
+  padding: 22px;
 }
 
-.faq{
-max-width:850px;
-margin:auto;
+.product-name {
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-.faq-item{
-background:white;
-padding:25px;
-border-radius:15px;
-margin-bottom:15px;
+.product-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.faq-item h3{
-margin-bottom:10px;
+.price-old {
+  font-size: .85rem;
+  color: var(--gray);
+  text-decoration: line-through;
 }
 
-footer{
-padding:60px 20px;
-text-align:center;
-color:#777;
+.price-new {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--gold);
 }
 
-.floating-whatsapp{
-position:fixed;
-right:25px;
-bottom:25px;
-width:65px;
-height:65px;
-display:flex;
-justify-content:center;
-align-items:center;
-border-radius:50%;
-background:#25D366;
-font-size:30px;
-text-decoration:none;
-color:white;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-z-index:999;
+.stock-bar-wrap {
+  margin: 14px 0;
 }
 
-@media(max-width:768px){
-
-.hero h1{
-font-size:3rem;
+.stock-text {
+  font-size: .68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
 }
 
-.price{
-font-size:2.5rem;
+.stock-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-.navbar{
-padding:15px;
+.stock-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width 1s ease;
 }
 
+.buy-btn {
+  display: block;
+  margin-top: 18px;
+  padding: 14px;
+  background: var(--gold);
+  color: var(--black);
+  text-align: center;
+  text-decoration: none;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background .2s, transform .2s;
+}
+.buy-btn:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
 }
 
+/* ── SLIDER GALLERY ── */
+.gallery-section {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.gallery-section .section-head {
+  padding: 0 24px;
+}
+
+.gallery-track-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 16px;
+  padding: 20px 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.gallery-track:active { cursor: grabbing; }
+.gallery-track::-webkit-scrollbar { display: none; }
+
+.gallery-slide {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform .3s, border-color .3s;
+  position: relative;
+}
+
+.gallery-slide:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 24px;
+}
+
+.gallery-arrow {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color .2s, color .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery-arrow:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── BEFORE / AFTER ── */
+.ba-section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+
+.ba-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  user-select: none;
+  border: 1px solid var(--border);
+}
+
+.ba-before, .ba-after {
+  position: absolute;
+  inset: 0;
+}
+
+.ba-before img, .ba-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-after {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path .05s;
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  cursor: ew-resize;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 44px; height: 44px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--black);
+  font-size: .9rem;
+  font-weight: 900;
+  cursor: ew-resize;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+
+.ba-label {
+  position: absolute;
+  bottom: 16px;
+  font-size: .6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: rgba(10,10,10,.7);
+  border-radius: 2px;
+}
+.ba-label-before { left: 16px; }
+.ba-label-after { right: 16px; }
+
+.ba-hint {
+  text-align: center;
+  margin-top: 16px;
+  font-size: .7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ── FEATURES ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 28px 22px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  transition: border-color .2s, transform .2s;
+}
+
+.feature-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+}
+
+.feature-card h3 {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+
+.feature-card p {
+  font-size: .85rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ── REVIEWS ── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.review-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+}
+
+.stars {
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: .9rem;
+  color: var(--gray);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.reviewer {
+  font-size: .7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ── FAQ ── */
+.faq-list { max-width: 700px; margin: 0 auto; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.faq-q::after {
+  content: '+';
+  font-size: 1.3rem;
+  color: var(--gold);
+  transition: transform .3s;
+}
+
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  color: var(--gray);
+  font-size: .85rem;
+  line-height: 1.7;
+  transition: max-height .35s ease, padding .35s;
+}
+
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding-top: 12px;
+}
+
+/* ── PRICE BLOCK ── */
+.price-block {
+  max-width: 480px;
+  margin: 40px auto 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px;
+  text-align: center;
+}
+
+.price-block .old { color: var(--gray); text-decoration: line-through; font-size: 1rem; }
+.price-block .new { font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin: 8px 0; }
+.price-block .save { color: var(--green); font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; }
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 18px 48px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .2s, transform .2s;
+}
+.hero-cta:hover { background: var(--gold2); transform: translateY(-3px); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--gray);
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── FLOAT BTN ── */
+.floating-wa {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 58px; height: 58px;
+  background: #25D366;
+  color: white;
+  font-size: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(37,211,102,.4);
+  z-index: 999;
+  transition: transform .2s;
+}
+.floating-wa:hover { transform: scale(1.1); }
+
+/* ── DIVIDER ── */
+.divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .navbar { padding: 0 20px; }
+  .nav-links { display: none; }
+  .gallery-slide { flex: 0 0 260px; }
+  .gallery-slide img { height: 320px; }
+  .timer-num { font-size: 2rem; min-width: 52px; }
+}
 </style>
 </head>
-
 <body>
 
-<nav class="navbar">
-<div class="logo">CROSS BLACK</div>
+<!-- OFFER BANNER -->
+<div class="offer-banner">
+  🔥 OFERTA ESPECIAL — ENVÍO GRATIS EN BOGOTÁ HOY
+</div>
 
-<a href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20unas%20Cross%20Black"
-class="nav-btn">
-WhatsApp
-</a>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">CROSS <span>BLACK</span></div>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20gafas%20Cross%20Black" class="nav-cta">Comprar</a>
 </nav>
 
-<a class="floating-whatsapp"
-href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20unas%20Cross%20Black">
-💬
-</a>
+<!-- FLOAT WA -->
+<a href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20gafas%20Cross%20Black" class="floating-wa">💬</a>
 
+<!-- HERO -->
 <section class="hero">
+  <p class="hero-eyebrow">Colección 2026 — Bogotá, Colombia</p>
+  <h1>CROSS<br><em>BLACK</em></h1>
+  <p class="hero-sub">Diseño premium inspirado en el lujo urbano. Monturas que hablan antes que tú.</p>
 
-<div class="badge">
-🔥 Diseño Premium • Entrega Rápida
-</div>
+  <div class="hero-image-wrap">
+    <img src="magnific_professional-luxury-produ_YVwGw79WeC.png" alt="Cross Black">
+  </div>
 
-<h1>CROSS BLACK</h1>
-
-<p>
-Gafas con diseño premium inspiradas en el lujo urbano.
-Perfectas para destacar tu estilo en cualquier ocasión.
-</p>
-
-<img src="magnific_professional-luxury-produ_YVwGw79WeC.png"
-class="main-image"
-alt="Cross Black">
-
-<div class="price-card">
-
-<div class="price-label">
-Precio especial
-</div>
-
-<div class="price">
-$85.000
-</div>
-
-<p>COP</p>
-
-<div class="extra">
-📦 Empaque de fábrica incluido
-</div>
-
-<div class="extra">
-⭐ Estuche Premium opcional +$15.000
-</div>
-
-<a class="buy-btn"
-href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20unas%20Cross%20Black">
-Comprar Ahora
-</a>
-
-</div>
-
+  <div class="price-block">
+    <p class="old">$95.000 COP</p>
+    <div class="new">$85.000</div>
+    <p class="save">✓ Ahorra $10.000 hoy</p>
+    <a href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20gafas%20Cross%20Black" class="hero-cta">Comprar Ahora</a>
+  </div>
 </section>
 
-<section class="section">
-
-<h2>Catálogo</h2>
-
-<div class="catalogo-grid">
-
-<div class="producto">
-<img src="IMG_1833.jpg">
-<div class="producto-info">
-<h3>Cross Black Classic</h3>
-<div class="producto-price">$85.000</div>
-<a class="producto-btn"
-href="https://wa.me/573011480699?text=Hola,%20quiero%20las%20Cross%20Black%20Classic">
-Comprar
-</a>
-</div>
-</div>
-
-<div class="producto">
-<img src="IMG_1830.jpg">
-<div class="producto-info">
-<h3>Cross Black Urban</h3>
-<div class="producto-price">$85.000</div>
-<a class="producto-btn"
-href="https://wa.me/573011480699?text=Hola,%20quiero%20las%20Cross%20Black%20Urban">
-Comprar
-</a>
-</div>
+<!-- TIMER -->
+<div class="timer-section">
+  <p class="timer-label">Oferta termina en</p>
+  <div class="timer">
+    <div class="timer-unit">
+      <div class="timer-num" id="t-h">00</div>
+      <span class="timer-lbl">Horas</span>
+    </div>
+    <span class="timer-sep">:</span>
+    <div class="timer-unit">
+      <div class="timer-num" id="t-m">00</div>
+      <span class="timer-lbl">Min</span>
+    </div>
+    <span class="timer-sep">:</span>
+    <div class="timer-unit">
+      <div class="timer-num" id="t-s">00</div>
+      <span class="timer-lbl">Seg</span>
+    </div>
+  </div>
 </div>
 
-<div class="producto">
-<img src="IMG_1827.jpg">
-<div class="producto-info">
-<h3>Cross Black Luxury</h3>
-<div class="producto-price">$85.000</div>
-<a class="producto-btn"
-href="https://wa.me/573011480699?text=Hola,%20quiero%20las%20Cross%20Black%20Luxury">
-Comprar
-</a>
-</div>
-</div>
+<!-- CATALOG -->
+<section class="section" id="catalogo">
+  <div class="section-head">
+    <p class="eyebrow">Selecciona tu modelo</p>
+    <h2>Catálogo</h2>
+    <p>Edición limitada. Stock real actualizado.</p>
+  </div>
 
-</div>
+  <div class="model-selector">
+    <button class="model-tab active" data-filter="all">Todos</button>
+    <button class="model-tab" data-filter="classic">Classic</button>
+    <button class="model-tab" data-filter="urban">Urban</button>
+    <button class="model-tab" data-filter="luxury">Luxury</button>
+  </div>
 
+  <div class="catalog-grid">
+
+    <div class="product-card visible" data-model="classic">
+      <img src="IMG_1833.jpg" alt="Cross Black Classic">
+      <div class="product-info">
+        <div class="product-name">Cross Black Classic</div>
+        <div class="product-prices">
+          <span class="price-old">$95.000 COP</span>
+          <span class="price-new">$85.000</span>
+        </div>
+        <div class="stock-bar-wrap">
+          <p class="stock-text" id="stock-classic">🔥 Solo quedan 3 unidades</p>
+          <div class="stock-bar"><div class="stock-fill" style="width:20%"></div></div>
+        </div>
+        <a class="buy-btn" href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Classic">
+          Comprar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="product-card visible" data-model="urban">
+      <img src="IMG_1830.jpg" alt="Cross Black Urban">
+      <div class="product-info">
+        <div class="product-name">Cross Black Urban</div>
+        <div class="product-prices">
+          <span class="price-old">$95.000 COP</span>
+          <span class="price-new">$85.000</span>
+        </div>
+        <div class="stock-bar-wrap">
+          <p class="stock-text" id="stock-urban">⚡ Últimas 2 disponibles</p>
+          <div class="stock-bar"><div class="stock-fill" style="width:13%"></div></div>
+        </div>
+        <a class="buy-btn" href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Urban">
+          Comprar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="product-card visible" data-model="luxury">
+      <img src="IMG_1827.jpg" alt="Cross Black Luxury">
+      <div class="product-info">
+        <div class="product-name">Cross Black Luxury</div>
+        <div class="product-prices">
+          <span class="price-old">$95.000 COP</span>
+          <span class="price-new">$85.000</span>
+        </div>
+        <div class="stock-bar-wrap">
+          <p class="stock-text" id="stock-luxury">🔥 Solo quedan 6 unidades</p>
+          <div class="stock-bar"><div class="stock-fill" style="width:40%"></div></div>
+        </div>
+        <a class="buy-btn" href="https://wa.me/573011480699?text=Hola,%20quiero%20comprar%20las%20Cross%20Black%20Luxury">
+          Comprar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="section">
+<hr class="divider">
 
-<h2>¿Qué incluye tu compra?</h2>
+<!-- GALLERY SLIDER -->
+<section class="gallery-section" id="galeria">
+  <div class="section-head">
+    <p class="eyebrow">Galería</p>
+    <h2>Así se ven puestas</h2>
+  </div>
 
-<div class="features">
+  <div class="gallery-track-wrap">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-slide"><img src="foto2.png" alt="Cross Black foto 1"></div>
+      <div class="gallery-slide"><img src="foto3.png" alt="Cross Black foto 2"></div>
+      <div class="gallery-slide"><img src="foto4.png" alt="Cross Black foto 3"></div>
+      <div class="gallery-slide"><img src="IMG_1833.jpg" alt="Cross Black Classic"></div>
+      <div class="gallery-slide"><img src="IMG_1830.jpg" alt="Cross Black Urban"></div>
+      <div class="gallery-slide"><img src="IMG_1827.jpg" alt="Cross Black Luxury"></div>
+    </div>
+  </div>
 
-<div class="feature">
-<h3>📦 Empaque de fábrica</h3>
-<p>Incluido sin costo adicional.</p>
-</div>
-
-<div class="feature">
-<h3>⭐ Estuche Premium</h3>
-<p>Protección extra por solo $15.000 COP.</p>
-</div>
-
-<div class="feature">
-<h3>🧼 Paño de limpieza</h3>
-<p>Ideal para mantener los lentes impecables.</p>
-</div>
-
-</div>
-
+  <div class="gallery-nav">
+    <button class="gallery-arrow" id="galleryPrev">&#8592;</button>
+    <button class="gallery-arrow" id="galleryNext">&#8594;</button>
+  </div>
 </section>
 
-<section class="section">
+<hr class="divider">
 
-<h2>Galería</h2>
-
-<div class="gallery">
-<img src="foto2.png">
-<img src="foto3.png">
-<img src="foto4.png">
-</div>
-
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="section-head">
+    <p class="eyebrow">Antes / Después</p>
+    <h2>El efecto Cross Black</h2>
+  </div>
+  <div class="ba-container" id="baContainer">
+    <div class="ba-before">
+      <img src="foto2.png" alt="Antes">
+      <span class="ba-label ba-label-before">Sin gafas</span>
+    </div>
+    <div class="ba-after" id="baAfter">
+      <img src="foto3.png" alt="Después">
+      <span class="ba-label ba-label-after">Con Cross Black</span>
+    </div>
+    <div class="ba-divider" id="baDivider">
+      <div class="ba-handle">⇄</div>
+    </div>
+  </div>
+  <p class="ba-hint">Arrastra para comparar</p>
 </section>
 
+<hr class="divider">
+
+<!-- FEATURES -->
 <section class="section">
-
-<h2>Opiniones de Clientes</h2>
-
-<div class="features">
-
-<div class="feature">
-★★★★★<br><br>
-"Excelente calidad y muy cómodas."
-</div>
-
-<div class="feature">
-★★★★★<br><br>
-"Se ven mucho más costosas de lo que realmente valen."
-</div>
-
-<div class="feature">
-★★★★★<br><br>
-"Volvería a comprarlas sin dudar."
-</div>
-
-</div>
-
+  <div class="section-head">
+    <p class="eyebrow">Por qué elegirlas</p>
+    <h2>Lo que las diferencia</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">◈</div>
+      <h3>Diseño Exclusivo</h3>
+      <p>Montura con detalles premium inspirados en el lujo urbano. Cada pieza es reconocible.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◉</div>
+      <h3>Filtro UV 400</h3>
+      <p>Protección completa contra rayos UV. Moda y salud visual en una sola pieza.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◎</div>
+      <h3>Ultra Ligeras</h3>
+      <p>Cómodas para largas jornadas. No las vas a querer quitar.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✦</div>
+      <h3>Envío Bogotá</h3>
+      <p>Contra entrega en toda Bogotá. Pagas cuando recibes.</p>
+    </div>
+  </div>
 </section>
 
+<hr class="divider">
+
+<!-- REVIEWS -->
 <section class="section">
-
-<h2>Preguntas Frecuentes</h2>
-
-<div class="faq">
-
-<div class="faq-item">
-<h3>¿Realizan envíos?</h3>
-<p>Sí, realizamos envíos en Bogotá y otras ciudades.</p>
-</div>
-
-<div class="faq-item">
-<h3>¿El estuche viene incluido?</h3>
-<p>No. El empaque de fábrica está incluido. El estuche Premium es opcional por $15.000 COP.</p>
-</div>
-
-<div class="faq-item">
-<h3>¿Cómo hago el pedido?</h3>
-<p>Haz clic en cualquier botón de WhatsApp y te atenderemos directamente.</p>
-</div>
-
-</div>
-
+  <div class="section-head">
+    <p class="eyebrow">Clientes</p>
+    <h2>Lo que dicen</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Excelente calidad y muy cómodas. Las uso todos los días y recibo piropos constantemente."</p>
+      <span class="reviewer">— Valeria M., Bogotá</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Se ven mucho más caras de lo que cuestan. Pensé que eran de marca de lujo."</p>
+      <span class="reviewer">— Santiago R., Usaquén</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Llegaron rápido y exactamente como en las fotos. El estuche es un detalle muy bonito."</p>
+      <span class="reviewer">— Daniela C., Chapinero</span>
+    </div>
+  </div>
 </section>
 
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-head">
+    <p class="eyebrow">Resolvemos tus dudas</p>
+    <h2>FAQ</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">¿Realizan envíos?</div>
+      <div class="faq-a">Sí, realizamos envíos contra entrega en toda Bogotá. Pagas cuando recibes el producto.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Qué incluye el pedido?</div>
+      <div class="faq-a">Cada par viene con estuche rígido y paño de limpieza de microfibra sin costo adicional.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo hago el pedido?</div>
+      <div class="faq-a">Solo haz clic en el botón de WhatsApp, cuéntanos tu modelo preferido y coordina la entrega.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Tienen filtro UV?</div>
+      <div class="faq-a">Sí, todos los modelos incluyen lentes con filtro UV 400 para protección completa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GISCUS COMMENTS -->
 <section class="section">
-
-<h2>Opiniones y Comentarios</h2>
-
-<script src="https://giscus.app/client.js"
-data-repo="sebastian12354864/cross-black"
-data-repo-id="R_kgDOS0kvHA"
-data-category="Announcements"
-data-category-id="DIC_kwDOS0kvHM4C-xPa"
-data-mapping="title"
-data-strict="0"
-data-reactions-enabled="1"
-data-emit-metadata="0"
-data-input-position="bottom"
-data-theme="preferred_color_scheme"
-data-lang="es"
-data-loading="lazy"
-crossorigin="anonymous"
-async>
-</script>
-
+  <div class="section-head">
+    <p class="eyebrow">Comunidad</p>
+    <h2>Opiniones y Comentarios</h2>
+  </div>
+  <script src="https://giscus.app/client.js"
+    data-repo="sebastian12354864/cross-black"
+    data-repo-id="R_kgDOS0kvHA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOS0kvHM4C-xPa"
+    data-mapping="title"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="dark"
+    data-lang="es"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
 </section>
 
 <footer>
-<p>© 2026 Cross Black. Todos los derechos reservados.</p>
+  <p>© 2026 Cross Black &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; Hecho con 🖤</p>
 </footer>
 
+<script>
+// ── TIMER (24h countdown, resets daily) ──
+(function() {
+  const KEY = 'cb_timer_end';
+  let end = localStorage.getItem(KEY);
+  if (!end || Date.now() > +end) {
+    end = Date.now() + 24 * 60 * 60 * 1000;
+    localStorage.setItem(KEY, end);
+  }
+  function update() {
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('t-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('t-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('t-s').textContent = String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+// ── DYNAMIC STOCK (random decrease over time) ──
+(function() {
+  const stocks = {
+    classic: { el: document.getElementById('stock-classic'), count: 3, bar: document.querySelector('[data-model="classic"] .stock-fill') },
+    urban:   { el: document.getElementById('stock-urban'),   count: 2, bar: document.querySelector('[data-model="urban"] .stock-fill') },
+    luxury:  { el: document.getElementById('stock-luxury'),  count: 6, bar: document.querySelector('[data-model="luxury"] .stock-fill') },
+  };
+  const icons = ['🔥','⚡','👀'];
+  function dropRandom() {
+    const keys = Object.keys(stocks).filter(k => stocks[k].count > 0);
+    if (!keys.length) return;
+    const k = keys[Math.floor(Math.random() * keys.length)];
+    const s = stocks[k];
+    s.count = Math.max(0, s.count - 1);
+    const ic = icons[Math.floor(Math.random() * icons.length)];
+    s.el.textContent = s.count > 0
+      ? ic + ' Solo quedan ' + s.count + ' unidades'
+      : '❌ Agotado';
+    const pct = Math.min(100, (s.count / 10) * 100);
+    s.bar.style.width = pct + '%';
+    s.bar.style.background = s.count <= 2 ? '#ef4444' : '#22c55e';
+  }
+  // Drop one unit after 45-90 seconds to simulate activity
+  setTimeout(dropRandom, 45000 + Math.random() * 45000);
+  setTimeout(dropRandom, 120000 + Math.random() * 60000);
+})();
+
+// ── MODEL SELECTOR ──
+document.querySelectorAll('.model-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.model-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.classList.toggle('visible', filter === 'all' || card.dataset.model === filter);
+    });
+  });
+});
+
+// ── GALLERY DRAG SCROLL ──
+(function() {
+  const track = document.getElementById('galleryTrack');
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => {
+    isDown = true;
+    track.style.cursor = 'grabbing';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  document.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+
+  document.getElementById('galleryPrev').addEventListener('click', () => {
+    track.scrollBy({ left: -356, behavior: 'smooth' });
+  });
+  document.getElementById('galleryNext').addEventListener('click', () => {
+    track.scrollBy({ left: 356, behavior: 'smooth' });
+  });
+})();
+
+// ── BEFORE / AFTER SLIDER ──
+(function() {
+  const container = document.getElementById('baContainer');
+  const after = document.getElementById('baAfter');
+  const divider = document.getElementById('baDivider');
+  if (!container) return;
+
+  let dragging = false;
+
+  function setPos(pct) {
+    pct = Math.max(5, Math.min(95, pct));
+    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    divider.style.left = pct + '%';
+  }
+
+  function fromEvent(e) {
+    const rect = container.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    setPos((x / rect.width) * 100);
+  }
+
+  divider.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+  document.addEventListener('mouseup', () => { dragging = false; });
+  document.addEventListener('mousemove', e => { if (dragging) fromEvent(e); });
+
+  divider.addEventListener('touchstart', e => { dragging = true; });
+  document.addEventListener('touchend', () => { dragging = false; });
+  document.addEventListener('touchmove', e => { if (dragging) fromEvent(e); });
+})();
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
 </body>
 </html>
-
-</html>
-  
