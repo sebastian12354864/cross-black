@@ -1406,6 +1406,9 @@ document.querySelectorAll('.faq-q').forEach(q => {
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
+  });
+});
+
 // ── MOBILE NAV TOGGLE ──
 (function() {
   const toggle = document.getElementById('navToggle');
