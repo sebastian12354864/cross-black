@@ -12,12 +12,13 @@
   <header><a class="brand" href="./">quita fácil<span>BIENESTAR QUE SE SIENTE</span></a></header>
   <main class="section" style="max-width:760px;margin:auto;min-height:65vh">
     <p class="eyebrow">TU PAGO, PASO A PASO</p>
-    <h1 style="font-size:48px">Estamos verificando tu pago.</h1>
-    <p class="muted">Volver desde Wompi no confirma que el pago haya sido aprobado. La confirmación depende del resultado que Wompi envíe a la tienda.</p>
-    <div class="notice">Esta integración está en pruebas. No se genera un despacho desde esta pantalla.</div>
+    <h1 id="payment-title" style="font-size:48px">Estamos verificando tu pago.</h1>
+    <p class="muted" id="payment-message">Volver desde Wompi no confirma que el pago haya sido aprobado. La confirmación depende del resultado que Wompi envíe a la tienda.</p>
+    <div class="notice" id="payment-notice">Consultando la confirmación de Wompi…</div><p id="payment-reference"></p><button class="button outline" id="refresh-payment" type="button">Consultar de nuevo</button>
     <p class="muted">Si necesitas ayuda, escribe a <a class="inline-link" href="mailto:juselogue@gmail.com">juselogue@gmail.com</a> o al <a class="inline-link" href="https://wa.me/573011480699">301 148 0699</a>. Evita repetir un pago sin comprobar primero su estado en Wompi.</p>
     <a class="button dark" href="./">Volver a la tienda <span>→</span></a>
   </main>
   <footer><p>Quita Fácil · Juan Sebastián Losada Guevara</p></footer>
+<script src="pago.js?v=live-1" type="module"></script>
 </body>
 </html>

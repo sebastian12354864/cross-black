@@ -27,23 +27,29 @@ export async function validEvent(event, secret) {
 }
 
 export function validateOrder(body, allowedDestinations) {
-  if (!body || !/^[a-f0-9-]{36}$/i.test(body.requestId || '')) throw Error('Identificador inválido.');
+  if (!body || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(body.requestId || '')) throw Error('Identificador inválido.');
   if (!['cod','advance'].includes(body.payment)) throw Error('Selecciona el método de pago.');
   if (!['S','M','L','XL','2XL','3XL'].includes(body.size) || !['Negro','Beige'].includes(body.color)) throw Error('Selecciona talla y color válidos.');
   if (!Number.isInteger(body.quantity) || body.quantity < 1 || body.quantity > 10) throw Error('Cantidad inválida.');
   if (body.consent !== true) throw Error('Debes autorizar el tratamiento de tus datos.');
   const customer = {};
-  for (const [key, max] of Object.entries({firstName:80,lastName:80,phone:20,email:150,department:100,city:100,address:180,neighborhood:100,property:40,unit:150,notes:500})) {
+  for (const [key, max] of Object.entries({firstName:80,lastName:80,phone:20,email:150,department:100,city:100,address:180,neighborhood:100,property:40,unit:150,notes:500,postalCode:6,recipient:120,recipientPhone:20})) {
     const value = body.customer?.[key];
     if (value !== undefined && typeof value !== 'string') throw Error('Datos inválidos.');
     customer[key] = (value || '').trim();
     if (customer[key].length > max) throw Error('Datos demasiado largos.');
   }
   for (const field of ['firstName','lastName','phone','department','city','address','neighborhood','property']) if (!customer[field]) throw Error('Completa tus datos de entrega.');
+  if(customer.address.length<5)throw Error('Revisa tu dirección completa.');
+  if(!['Casa','Apartamento','Oficina / local','Finca / zona rural','Otro'].includes(customer.property))throw Error('Selecciona un tipo de inmueble válido.');
+  customer.phone=customer.phone.replace(/[\s-]/g,'');
+  customer.recipientPhone=customer.recipientPhone.replace(/[\s-]/g,'');
+  if(customer.recipientPhone&&!/^(\+57)?3\d{9}$/.test(customer.recipientPhone))throw Error('Celular de quien recibe inválido.');
+  if(customer.postalCode&&!/^\d{6}$/.test(customer.postalCode))throw Error('Código postal inválido.');
   if (!/^(\+57\s?)?3\d{9}$/.test(customer.phone)) throw Error('Celular inválido.');
-  if (body.payment === 'advance' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) throw Error('Correo inválido.');
+  if ((body.payment === 'advance'||customer.email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) throw Error('Correo inválido.');
   if (customer.property === 'Apartamento' && !customer.unit) throw Error('Falta el apartamento.');
   const destination = customer.department + '|' + customer.city;
-  if (body.zone !== 'urban' || !allowedDestinations.includes(destination)) throw Error('Esta dirección requiere confirmar cobertura y envío antes de comprar.');
+  if (body.zone !== 'urban' || customer.property === 'Finca / zona rural' || !allowedDestinations.includes(destination)) throw Error('Esta dirección requiere confirmar cobertura y envío antes de comprar.');
   return {customer,size:body.size,color:body.color,quantity:body.quantity,payment:body.payment,amount:body.quantity * (body.payment === 'advance' ? 9700000 : 10000000)};
 }

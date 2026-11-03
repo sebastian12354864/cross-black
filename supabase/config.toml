@@ -6,3 +6,12 @@ verify_jwt = true
 # Wompi authenticates notifications with a cryptographic signature, not a Supabase JWT.
 [functions.wompi-events]
 verify_jwt = false
+
+[functions.create-order-live]
+verify_jwt = true
+
+[functions.wompi-events-live]
+verify_jwt = false
+
+[functions.payment-status]
+verify_jwt = true

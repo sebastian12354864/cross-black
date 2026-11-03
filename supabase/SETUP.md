@@ -1,3 +1,17 @@
+## Producción conectada · 3 de noviembre de 2026
+
+El formulario principal usa `store-config.js`, `create-order-live` y `payment-status`. Las claves privadas solo están en Supabase. El receptor firmado de producción es `wompi-events-live` (sin JWT; valida firma y consulta la transacción con Wompi). Pruebas y producción conservan funciones y secretos separados.
+
+Wompi producción: URL de eventos `https://btakiyexojkrrfwoxbtk.supabase.co/functions/v1/wompi-events-live`. Configurar esta dirección en producción, conservando la de Sandbox.
+
+Variables: `CHECKOUT_LIVE_ENABLED=true`, `SELLABLE_VARIANTS` con las 12 combinaciones confirmadas y `FREE_SHIPPING_DESTINATIONS` con la lista urbana autorizada. Para suspender pedidos, poner `CHECKOUT_LIVE_ENABLED=false`. Los secretos `WOMPI_LIVE_PUBLIC_KEY`, `WOMPI_LIVE_INTEGRITY_SECRET` y `WOMPI_LIVE_EVENTS_SECRET` ya están guardados por el titular. Nunca escribir sus valores privados en GitHub.
+
+Privacidad y condiciones: `privacidad.html`, `condiciones.html`, versión 2026-11-03, aceptadas antes de registrar. Los anticipados solo se despachan tras aprobación verificada y las tres revisiones manuales. Contra entrega requiere esas revisiones. Consultar `OPERACION-MANUAL.md`. No se automatiza Dropi ni se generan despachos desde el formulario.
+
+Validación: pruebas de precios, cobertura, consentimiento, separación de ambientes, formulario simulado y permisos de bandejas. La consulta pública devuelve solo estado, referencia e importe; nunca datos del cliente. No se ha efectuado un cobro real de validación.
+
+---
+
 # Conexión de pruebas: Quita Fácil
 
 ## Carga manual en Dropi (3 de noviembre de 2026)
