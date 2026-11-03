@@ -1,5 +1,13 @@
 # Conexión de pruebas: Quita Fácil
 
+## Carga manual en Dropi (3 de noviembre de 2026)
+
+Se preparó y comprobó en PostgreSQL aislado la migración `migrations/202611030001_manual_dropi.sql`: bandejas privadas, exclusión de pruebas, revisiones de cliente/inventario/cobertura, bloqueo de anticipos sin pagar, número Dropi único y protección de exportaciones. No se creó ningún pedido ni despacho en Dropi. La guía está en `OPERACION-MANUAL.md`.
+
+**PENDIENTE DE APLICAR EN SUPABASE:** el control del navegador y el entorno de automatización devolvieron `failed to write kernel assets` al intentar entrar. La migración todavía no se ejecutó en el proyecto remoto. Aplicarla una sola vez en SQL Editor; no repetir la migración inicial de noviembre 2. El último SELECT mostrará el mensaje de confirmación. Después se verán `pedidos_revision_manual` y `pedidos_listos_dropi` en Table Editor.
+
+El vendedor confirmó entrega estimada de 2 a 3 días hábiles, excluyendo domingos y festivos, y atención de cambios/devoluciones por teléfono para revisar el caso. Esa información se incorporó a las preguntas frecuentes y los datos de contacto. La tienda principal sigue sin aceptar pedidos reales; todavía faltan formulario definitivo, autorización de datos y configuración de producción, según se documenta abajo.
+
 Estado: tablas y función SQL creadas y comprobadas en el proyecto. Ambas funciones desplegadas. Se verificó que las tres claves de Wompi corresponden al ambiente de pruebas, sin leer sus valores. El usuario autorizó desactivar JWT exclusivamente en wompi-events para usar autenticación por firma; cambio aplicado. GET devuelve 405 y un evento con firma falsa devuelve 401. create-order conserva JWT y las compras siguen desactivadas. No se ha activado dinero real ni envío automático a Dropi.
 
 Proyecto: btakiyexojkrrfwoxbtk. La página sigue en GitHub Pages.
