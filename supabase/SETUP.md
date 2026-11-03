@@ -1,6 +1,6 @@
 # Conexión de pruebas: Quita Fácil
 
-Estado: tablas y función SQL creadas y comprobadas en el proyecto; receptor wompi-events desplegado, todavía con JWT activado y sin secretos de Wompi. create-order preparado localmente, pendiente de despliegue. Compras públicas desactivadas. No se ha activado dinero real ni envío automático a Dropi.
+Estado: tablas y función SQL creadas y comprobadas en el proyecto. Ambas funciones desplegadas. Se verificó que las tres claves de Wompi corresponden al ambiente de pruebas, sin leer sus valores. El usuario autorizó desactivar JWT exclusivamente en wompi-events para usar autenticación por firma; cambio aplicado. GET devuelve 405 y un evento con firma falsa devuelve 401. create-order conserva JWT y las compras siguen desactivadas. No se ha activado dinero real ni envío automático a Dropi.
 
 Proyecto: btakiyexojkrrfwoxbtk. La página sigue en GitHub Pages.
 
@@ -31,11 +31,12 @@ Solo este receptor usa verify_jwt=false porque autentica a Wompi con su firma. c
 
 ## Pendiente antes de conectar el formulario
 
-- Nombre del responsable y textos de privacidad, autorización y términos definidos.
+- Responsable confirmado: Juan Sebastián Losada Guevara. Contacto: juselogue@gmail.com, +57 301 148 0699. Pendiente redactar y revisar textos de privacidad, autorización y términos.
 - Municipios autorizados y procedimiento para validar direcciones urbanas; seleccionar urbano no prueba cobertura real.
 - Crear widget Turnstile y configurar llave pública en el cliente.
 - Desplegar funciones y configurar secretos directamente en Supabase.
-- Crear la página de retorno de pago y conectar el formulario en modo de prueba (sin anunciar un pago como aprobado por una redirección).
+- Página de retorno pago.html preparada. Pendiente conectar el formulario en modo de prueba y consultar de forma protegida el estado del pedido, sin anunciar un pago como aprobado por una redirección.
+- Registrar la URL de eventos en el panel de Wompi Sandbox. No usarla en producción.
 - Probar: aprobación, rechazo, reintento duplicado, importes alterados, evento falsificado y zonas sin cobertura.
 - Probar la RPC con eventos duplicados y fuera de orden en la base de datos.
 - Verificar en el panel que el usuario anónimo no puede consultar datos.

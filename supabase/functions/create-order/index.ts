@@ -7,6 +7,7 @@ Deno.serve(async req => {
   const headers = {'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'authorization, apikey, content-type, x-client-info','Access-Control-Allow-Methods':'POST, OPTIONS','Content-Type':'application/json','Cache-Control':'no-store','Vary':'Origin'};
   const reply = (data: unknown, status=200) => new Response(JSON.stringify(data),{status,headers});
   if (req.method === 'OPTIONS') return new Response(null,{status:204,headers});
+  if (req.method === 'GET') return reply({environment:'test',checkoutEnabled:Deno.env.get('CHECKOUT_TEST_ENABLED')==='true',wompiPublicKeyConfigured:(Deno.env.get('WOMPI_PUBLIC_KEY')||'').startsWith('pub_test_'),wompiIntegrityConfigured:(Deno.env.get('WOMPI_INTEGRITY_SECRET')||'').startsWith('test_integrity_'),wompiEventsConfigured:(Deno.env.get('WOMPI_EVENTS_SECRET')||'').startsWith('test_events_')});
   if (req.method !== 'POST') return reply({error:'Método no permitido.'},405);
   if (req.headers.get('origin') !== origin) return reply({error:'Origen no autorizado.'},403);
   if (Deno.env.get('CHECKOUT_TEST_ENABLED') !== 'true') return reply({error:'Estamos preparando las compras. Intenta más tarde.'},503);
