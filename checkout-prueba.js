@@ -1,4 +1,4 @@
-import {checkoutConfig as config} from './checkout-config.js';
+import {checkoutConfig as config} from './checkout-config.js?v=turnstile-1';
 import {destinations} from './delivery-config.js';
 
 const form=document.querySelector('#test-checkout');
