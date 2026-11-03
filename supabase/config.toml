@@ -1,0 +1,8 @@
+project_id = "btakiyexojkrrfwoxbtk"
+
+[functions.create-order]
+verify_jwt = true
+
+# Wompi authenticates notifications with a cryptographic signature, not a Supabase JWT.
+[functions.wompi-events]
+verify_jwt = false
