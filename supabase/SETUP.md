@@ -66,3 +66,7 @@ CHECKOUT_TEST_ENABLED se configuró true en Supabase; GET confirmó ambiente tes
 ## Pruebas realizadas desde la página publicada
 
 Turnstile verificó la solicitud real y create-order registró un pedido ficticio contra entrega: QF-test-40034baa-7f3c-4ac1-815f-e85252b3c2d3. Se generó un enlace anticipado; se detectó salto de línea en la llave pública de Wompi. Se corrigieron y desplegaron ambas funciones para recortar espacios al leer claves y secretos, sin modificarlos ni mostrarlos. El enlace corregido de dos unidades por $194.000 abrió Wompi y mostró MODO DE PRUEBAS, comercio easyshopi, medios de pago disponibles. Referencia QF-test-523702c4-9f35-4f75-b822-e03dbf13791a. No se completó el pago ni se verificó aún la recepción de un evento aprobado de Sandbox. No se despacharon pedidos.
+
+## Confirmación completa de pago Sandbox
+
+Verificado directamente en Supabase para transacción 12244737-1793678424-53299: store_payments.status=APPROVED, store_orders.payment_status=approved, importe 97000 COP y environment=test. Wompi mostró entrega del evento exitosa. Quedó probado el flujo de notificación firmada y actualización automática del pedido. Las ventas de producción y el despacho por Dropi siguen pendientes; no activar por este resultado de Sandbox.
