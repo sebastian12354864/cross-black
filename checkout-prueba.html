@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+  <title>Compra de prueba | Quita Fácil</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .test-layout{display:grid;grid-template-columns:1fr 1fr;gap:45px;max-width:1000px;margin:auto}.test-image{width:100%;height:auto;border-radius:6px}.test-card label{display:block;font-size:12px;margin:18px 0 8px}.test-card input[type=checkbox]{width:auto;min-height:0;margin-right:8px}.test-card .button{margin-top:20px}.test-card .muted{margin-top:8px}button:disabled{opacity:.55;cursor:not-allowed}.test-status{font-size:13px;line-height:1.8;overflow-wrap:anywhere}.test-card fieldset{margin:0;padding:0;border:0}.test-card legend{font-size:18px;padding:0;margin-bottom:15px}@media(max-width:760px){.test-layout{grid-template-columns:1fr;gap:25px}.test-image{max-height:350px;object-fit:contain}}
+  </style>
+  <script src="checkout-prueba.js" type="module"></script>
+</head>
+<body>
+  <div class="announcement">PRUEBA · No se cobra dinero real ni se despachan productos</div>
+  <header><a class="brand" href="./">quita fácil<span>BIENESTAR QUE SE SIENTE</span></a><a href="./" class="inline-link">Volver a la tienda</a></header>
+  <main class="section test-layout">
+    <div><img class="test-image" id="test-image" src="assets/body-negro.png" alt="Body negro, imagen recreada" width="1024" height="1536"><p class="micro">Simulación con datos ficticios. No introduzcas datos personales.</p></div>
+    <section class="test-card">
+      <p class="eyebrow">PROBEMOS EL PROCESO COMPLETO</p><h2>Una compra de prueba.</h2>
+      <p class="muted">Este pedido utiliza un cliente y una dirección ficticios. La selección del municipio sirve para comprobar la regla de envío; no confirma cobertura real.</p>
+      <form id="test-checkout">
+        <fieldset><legend>Elige tu prueba</legend>
+          <label for="test-size">Talla</label><select id="test-size" required><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option></select>
+          <label for="test-color">Color</label><select id="test-color" required><option>Negro</option><option>Beige</option></select>
+          <label for="test-quantity">Cantidad</label><input id="test-quantity" type="number" min="1" max="10" step="1" value="1" required>
+          <label for="test-destination">Municipio</label><select id="test-destination" required></select>
+          <label for="test-zone">Zona de entrega</label><select id="test-zone" required><option value="urban">Urbana</option><option value="rural">Rural / vereda (requiere cotización)</option></select>
+          <label for="test-payment">Forma de pago</label><select id="test-payment" required><option value="cod">Contra entrega</option><option value="advance">Anticipado con Wompi</option></select>
+          <p id="test-total" class="discount-note" aria-live="polite"></p>
+          <label><input type="checkbox" id="test-consent" required>Entiendo que es una simulación con datos ficticios.</label>
+          <div id="test-captcha"></div>
+          <button class="button dark full" type="submit" id="test-submit" disabled>Probar pedido <span>→</span></button>
+        </fieldset>
+      </form>
+      <p id="test-status" class="test-status" role="status" aria-live="polite">La prueba está pendiente de configuración. No se enviarán datos.</p>
+      <a id="test-payment-link" class="button dark full" hidden rel="noreferrer">Continuar al pago de prueba →</a>
+    </section>
+  </main>
+  <footer><p>Quita Fácil · Juan Sebastián Losada Guevara · <a href="mailto:juselogue@gmail.com">juselogue@gmail.com</a></p></footer>
+</body>
+</html>

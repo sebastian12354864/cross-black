@@ -46,3 +46,13 @@ Solo este receptor usa verify_jwt=false porque autentica a Wompi con su firma. c
 El código actual es exclusivamente Sandbox. Producción requiere una revisión y configuración separadas; cambiar una variable no activa dinero real.
 
 Verificación local: 5 pruebas aprobadas con `node --test tests/payment.test.mjs`; ambas funciones pasan `deno check`. En Supabase se verificaron acceso privado, RLS, importe incorrecto, duplicados y eventos fuera de orden con datos ficticios revertidos. Falta comprobar el flujo completo con Wompi Sandbox.
+
+## Avance de la pantalla de pruebas
+
+El usuario confirmó haber guardado la URL de eventos en Wompi Sandbox. Pendiente comprobar un evento real de Sandbox. Se creó checkout-prueba.html, con datos ficticios, contra entrega y anticipo, siempre limitada a test. checkout-config.js permanece enabled:false y no tiene claves; no se cargan scripts de Turnstile ni se envían solicitudes hasta configurarlo. No hay enlace público desde la tienda a la pantalla de prueba.
+
+Lista urbana autorizada guardada en delivery-config.js y supabase/free-shipping-destinations.json: Medellín, Cartagena, Bucaramanga, Bogotá D. C., Cali, Barranquilla, Cúcuta, Santa Marta. Para Eje Cafetero se asumieron Armenia, Pereira y Manizales, anunciado al usuario. No cubre municipios vecinos automáticamente. La cobertura real debe validarse con Dropi.
+
+Pendiente inmediato: crear cuenta gratuita Cloudflare y widget Turnstile, hostname sebastian12354864.github.io, modo Managed; guardar secreto únicamente en Supabase como TURNSTILE_SECRET_KEY y llave pública en checkout-config.js. Obtener la llave anon pública de Supabase para el cliente. Configurar FREE_SHIPPING_DESTINATIONS con el JSON incluido. Solo después habilitar una sesión controlada de pruebas.
+
+Verificación de interfaz: dos unidades anticipadas muestran $194.000; rural bloquea pago y muestra envío por cotizar; botón deshabilitado sin configuración. La tienda principal conserva el resumen local y solo muestra Wompi como futura pasarela.
