@@ -37,6 +37,10 @@ const path=require('node:path');
   await reject('select * from public.pedidos_listos_dropi','Private ready view must deny '+role);
   await db.exec('reset role');
  }
+ const before=(await db.query('select count(*)::int as total from public.store_orders')).rows[0].total;
+ await db.exec(fs.readFileSync(path.join(__dirname,'../supabase/migrations/202611030001_manual_dropi.sql'),'utf8'));
+ assert.equal((await db.query('select count(*)::int as total from public.store_orders')).rows[0].total,before,'Re-running setup must preserve orders');
+ assert.equal((await db.query("select count(*)::int as total from pg_trigger where tgname='guard_manual_dropi_registration'")).rows[0].total,1,'Re-running setup must not duplicate triggers');
  await db.close();
  console.log('PASS: private queues, test isolation, review gates, payment gate, collect-on-delivery amount, duplicate IDs and spreadsheet export protection.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

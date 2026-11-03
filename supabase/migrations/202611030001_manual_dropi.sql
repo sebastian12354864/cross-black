@@ -28,7 +28,7 @@ begin
   return new;
 end $$;
 revoke all on function public.guard_manual_dropi_registration() from public,anon,authenticated;
-create trigger guard_manual_dropi_registration
+create or replace trigger guard_manual_dropi_registration
   before update of fulfillment_status,dropi_order_id on public.store_orders
   for each row execute function public.guard_manual_dropi_registration();
 
@@ -40,7 +40,7 @@ $$;
 revoke all on function public.store_export_text(text) from public,anon,authenticated;
 grant execute on function public.store_export_text(text) to service_role;
 
-create view public.pedidos_revision_manual with (security_invoker=true) as
+create or replace view public.pedidos_revision_manual with (security_invoker=true) as
 select
   id, reference as numero_tienda, created_at as fecha,
   case
@@ -79,7 +79,7 @@ from public.store_orders where environment='prod';
 revoke all on public.pedidos_revision_manual from public,anon,authenticated;
 grant select on public.pedidos_revision_manual to service_role;
 
-create view public.pedidos_listos_dropi with (security_invoker=true) as
+create or replace view public.pedidos_listos_dropi with (security_invoker=true) as
 select * from public.pedidos_revision_manual where siguiente_paso='LISTO_PARA_CARGAR';
 revoke all on public.pedidos_listos_dropi from public,anon,authenticated;
 grant select on public.pedidos_listos_dropi to service_role;
