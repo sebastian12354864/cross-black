@@ -56,3 +56,7 @@ Lista urbana autorizada guardada en delivery-config.js y supabase/free-shipping-
 Pendiente inmediato: crear cuenta gratuita Cloudflare y widget Turnstile, hostname sebastian12354864.github.io, modo Managed; guardar secreto únicamente en Supabase como TURNSTILE_SECRET_KEY y llave pública en checkout-config.js. Obtener la llave anon pública de Supabase para el cliente. Configurar FREE_SHIPPING_DESTINATIONS con el JSON incluido. Solo después habilitar una sesión controlada de pruebas.
 
 Verificación de interfaz: dos unidades anticipadas muestran $194.000; rural bloquea pago y muestra envío por cotizar; botón deshabilitado sin configuración. La tienda principal conserva el resumen local y solo muestra Wompi como futura pasarela.
+
+## Configuración de Turnstile completada
+
+El usuario guardó TURNSTILE_SECRET_KEY, verificado por nombre en Supabase. Site Key pública incorporada. La llave pública Supabase suministrada por el panel es sb_publishable_; se comprobó que el gateway actual acepta el encabezado de compatibilidad y create-order GET devuelve HTTP 200. No se desactivó JWT de create-order. Lista de municipios guardada en FREE_SHIPPING_DESTINATIONS. Pantalla separada de pruebas habilitada; tienda principal sigue desactivada. Pendiente prueba real de CAPTCHA y creación de pedido, pago Sandbox y recepción del evento.
