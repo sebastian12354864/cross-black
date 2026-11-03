@@ -51,7 +51,7 @@ form.addEventListener('submit',event=>{
  }
  reviewedPayload={requestId,payment:data.get('payment'),size:document.querySelector('#size').value,color:document.querySelector('#color').value,quantity,zone:data.get('zone'),consent:form.elements.consent.checked,termsAccepted:form.elements.terms.checked,consentVersion:config.consentVersion,customer:Object.fromEntries(Object.keys(labels).filter(key=>!['zone','payment','gateway'].includes(key)).map(key=>[key,String(data.get(key)||'').trim()]))};
  document.querySelector('#review-pricing').textContent=`${quantity} unidad(es) · Talla ${reviewedPayload.size} · ${reviewedPayload.color} · Total ${document.querySelector('#summary-subtotal').textContent} · Envío gratis`;
- layout.hidden=true;review.hidden=false;dialog.scrollTop=0;orderMessage.textContent='';paymentLink.hidden=true;confirmation.hidden=false;
+ review.querySelector('h3').textContent='Revisa tus datos';review.querySelector('p').textContent='Tu pedido todavía no se ha enviado.';layout.hidden=true;review.hidden=false;dialog.scrollTop=0;orderMessage.textContent='';paymentLink.hidden=true;confirmation.hidden=false;
  confirmation.textContent=reviewedPayload.payment==='advance'?'Registrar y continuar al pago':'Confirmar pedido contra entrega';
  confirmation.disabled=!config.enabled||!captchaToken;
  if(config.enabled)showCaptcha();
@@ -62,7 +62,7 @@ confirmation.addEventListener('click',async()=>{
  busy=true;confirmation.disabled=true;document.querySelector('#close-checkout').disabled=true;document.querySelector('#edit-details').disabled=true;orderMessage.textContent='Registrando tu pedido…';
  try{
   const result=await sendOrder(config,{...reviewedPayload,captchaToken});
-  confirmation.hidden=true;document.querySelector('#captcha-area').hidden=true;document.querySelector('#edit-details').hidden=true;
+  review.querySelector('h3').textContent='Pedido registrado';review.querySelector('p').textContent='Conserva la referencia de tu pedido.';confirmation.hidden=true;document.querySelector('#captcha-area').hidden=true;document.querySelector('#edit-details').hidden=true;
   document.querySelector('#review-data').replaceChildren();
   if(result.checkoutUrl){paymentLink.href=result.checkoutUrl;paymentLink.hidden=false;orderMessage.textContent=`Pedido ${result.reference} registrado. Continúa a Wompi para realizar el pago. Todavía no está pagado.`;}
   else orderMessage.textContent=result.status==='approved'?`Pedido ${result.reference}: pago confirmado. Revisaremos los datos para coordinar el despacho.`:`Pedido ${result.reference} recibido. Te contactaremos para confirmar disponibilidad y entrega. Pagarás al recibirlo.`;
