@@ -18,7 +18,7 @@ Deno.serve(async req => {
     const allowed = JSON.parse(Deno.env.get('FREE_SHIPPING_DESTINATIONS') || '[]');
     const order = validateOrder(body, allowed);
     // CAPTCHA is verified server-side before any record is written.
-    const captchaSecret = Deno.env.get('TURNSTILE_SECRET_KEY');
+    const captchaSecret = (Deno.env.get('TURNSTILE_SECRET_KEY') || '').trim();
     if (!captchaSecret || typeof body.captchaToken !== 'string') return reply({error:'Falta verificar la solicitud.'},400);
     const captcha = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',body:new URLSearchParams({secret:captchaSecret,response:body.captchaToken})});
     const challenge = await captcha.json();
@@ -29,8 +29,8 @@ Deno.serve(async req => {
     const {data:existing,error:readError} = await db.from('store_orders').select('reference,request_hash').eq('request_id',body.requestId).maybeSingle();
     if (readError) throw Error('storage');
     if (existing && existing.request_hash !== hash) return reply({error:'La solicitud cambió. Inicia un pedido nuevo.'},409);
-    const publicKey = Deno.env.get('WOMPI_PUBLIC_KEY') || '';
-    const integrity = Deno.env.get('WOMPI_INTEGRITY_SECRET') || '';
+    const publicKey = (Deno.env.get('WOMPI_PUBLIC_KEY') || '').trim();
+    const integrity = (Deno.env.get('WOMPI_INTEGRITY_SECRET') || '').trim();
     if (order.payment === 'advance' && (!publicKey.startsWith('pub_test_') || !integrity.startsWith('test_integrity_'))) return reply({error:'Los pagos de prueba todavía no están configurados.'},503);
     if (!existing) {
       const {error} = await db.from('store_orders').insert({request_id:body.requestId,request_hash:hash,reference,environment:'test',payment_method:order.payment,customer:order.customer,size:order.size,color:order.color,quantity:order.quantity,amount_in_cents:order.amount,consent_version:'pending-test-v1'});

@@ -8,7 +8,7 @@ Deno.serve(async req => {
     const raw = await req.text();
     if (raw.length > 32000) return reply(413);
     const event = JSON.parse(raw);
-    const secret = Deno.env.get('WOMPI_EVENTS_SECRET') || '';
+    const secret = (Deno.env.get('WOMPI_EVENTS_SECRET') || '').trim();
     if (!secret.startsWith('test_events_') || event.environment !== 'test' || !await validEvent(event,secret)) return reply(401);
     if (event.event !== 'transaction.updated') return reply(200);
     const tx = event.data.transaction;
