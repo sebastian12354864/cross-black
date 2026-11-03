@@ -60,3 +60,5 @@ Verificación de interfaz: dos unidades anticipadas muestran $194.000; rural blo
 ## Configuración de Turnstile completada
 
 El usuario guardó TURNSTILE_SECRET_KEY, verificado por nombre en Supabase. Site Key pública incorporada. La llave pública Supabase suministrada por el panel es sb_publishable_; se comprobó que el gateway actual acepta el encabezado de compatibilidad y create-order GET devuelve HTTP 200. No se desactivó JWT de create-order. Lista de municipios guardada en FREE_SHIPPING_DESTINATIONS. Pantalla separada de pruebas habilitada; tienda principal sigue desactivada. Pendiente prueba real de CAPTCHA y creación de pedido, pago Sandbox y recepción del evento.
+
+CHECKOUT_TEST_ENABLED se configuró true en Supabase; GET confirmó ambiente test y compras de prueba habilitadas. La página principal continúa con su resumen local sin enviar pedidos. Para evitar caché obsoleta, la pantalla de pruebas versiona las importaciones. Pendiente completar manualmente la verificación Turnstile y probar registro/pago.
